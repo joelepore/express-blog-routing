@@ -3,16 +3,31 @@ const router = express.Router();
 
 // Index
 router.get('/', (req, res) => {
-  res.send(`Rotta index: mostro tutti i post`);
+  res.send(`Rotta INDEX: mostro tutti i post`);
 })
 // Show
+router.get('/:id', (req, res) => {
+  res.send(`Rotta SHOW: mostro il post con id ${req.params.id}`);
+})
 
 // Store
+router.post('/', (req, res) => {
+  res.send(`Rotta STORE: creo un nuovo post`);
+})
 
 // Update
+router.put('/:id', (req, res) => {
+  res.send(`Rotta UPDATE: modifico interamente il post con id ${req.params.id}`);
+})
 
 // Modify
+router.patch('/:id', (req, res) => {
+  res.send(`Rotta MODIFY: modifico parzialmente il post con id ${req.params.id}`);
+})
 
 // Destroy
+router.delete('/:id', (req, res) => {
+  res.send(`Rotta DESTROY: elimino il post con id ${req.params.id}`);
+})
 
 module.exports = router;
