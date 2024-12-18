@@ -1,13 +1,17 @@
 const express = require('express');
 const router = express.Router();
+// Data
+const posts = require('../data/posts');
 
 // Index
 router.get('/', (req, res) => {
-  res.send(`Rotta INDEX: mostro tutti i post`);
+  res.json(posts);
 })
 // Show
 router.get('/:id', (req, res) => {
-  res.send(`Rotta SHOW: mostro il post con id ${req.params.id}`);
+  const id = parseInt(req.params.id);
+  const post = posts.find(post => post.id === id) ?? { result: 'Post not found' };
+  res.json(post);
 })
 
 // Store
